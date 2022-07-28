@@ -1,0 +1,12 @@
+{
+  "type": "code",
+  "modid": "pickupmessages",
+  "name": "PickupMessages",
+  "authors": ["PeculiarSana"],
+  "description": "A small mod that displays notifications whenever you pick up an item or block.",
+  "version": "0.1.0",
+  "requiredOnServer": false,
+  "dependencies": {
+    "game": "1.17.0-rc.2"
+  }
+}

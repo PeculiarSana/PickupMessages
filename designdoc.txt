@@ -1,0 +1,7 @@
+Small item pickup notification on screen
+
+Stays as long as new items of the type are being picked up, and adds each to the number.
+New items stack on top of previous ones, order doesn't change if they're still on screen.
+Fade out after a few seconds of not picking up.
+
+VinstageStoryAPI.Collectible has an OnCollected method that might work

@@ -1,0 +1,59 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net461</TargetFramework>
+	</PropertyGroup>
+	<PropertyGroup Label="UserMacros">
+		<BinaryDir Condition="'$(Configuration)'=='Debug'">$(SolutionDir)/bin/Debug/</BinaryDir>
+		<ExcludeFiles Condition="'$(Configuration)'=='Debug'">**/VintagestoryAPI.*;**/VSCreativeMod.*;**/VSEssentials.*;**/VSSurvivalMod.*</ExcludeFiles>
+		<BinaryDir Condition="'$(Configuration)'=='Release'">$(SolutionDir)/bin/Release/</BinaryDir>
+		<ExcludeFiles Condition="'$(Configuration)'=='Release'">**/VintagestoryAPI.*;**/VSCreativeMod.*;**/VSEssentials.*;**/VSSurvivalMod.*</ExcludeFiles>
+		<DebugType>portable</DebugType>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Reference Include="VintagestoryAPI">
+			<HintPath>C:/Users/kenne/AppData/Roaming/Vintagestory/VintagestoryAPI.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="VintagestoryLib">
+			<HintPath>C:/Users/kenne/AppData/Roaming/Vintagestory/VintagestoryLib.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="VSSurvivalMod">
+			<HintPath>C:/Users/kenne/AppData/Roaming/Vintagestory/Mods/VSSurvivalMod.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="VSEssentials">
+			<HintPath>C:/Users/kenne/AppData/Roaming/Vintagestory/Mods/VSEssentials.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="VSCreativeMod">
+			<HintPath>C:/Users/kenne/AppData/Roaming/Vintagestory/Mods/VSCreativeMod.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="0Harmony">
+			<HintPath>C:/Users/kenne/AppData/Roaming/Vintagestory/Lib/0Harmony.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="cairo-sharp">
+			<HintPath>C:/Users/kenne/AppData/Roaming/Vintagestory/Lib/cairo-sharp.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="modinfo.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<OutFiles Include="$(OutDir)/**" Exclude="$(ExcludeFiles)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="designdoc.txt" />
+	</ItemGroup>
+
+	<Target Name="Package" AfterTargets="PostBuildEvent" Condition="'$(Configuration)' == 'Release'">
+		<ZipDirectory DestinationFile="bin/$(TargetName).zip" SourceDirectory="$(TargetDir)" Overwrite="true" />
+	</Target>
+
+</Project>
